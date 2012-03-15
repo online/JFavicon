@@ -19,7 +19,7 @@ For call options simply pass the argument to init:
 		height: 5 //The height of the bubble
 	});
 	
-For all other properties, see the [documentation] (/Jaguarko/JFavicon/tree/master/Doc)
+For all other properties, see the [documentation] (/StranNick/JFavicon/tree/master/Doc)
 
 ## Advanced
 *You can initialize JFavicon as many times as you want.*
