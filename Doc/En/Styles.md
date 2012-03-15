@@ -43,5 +43,5 @@ What do we do next? Next, we initialize JFavicon:
 	
 <b>Notice.</b> *You can initialize JFavicon as many times as you want.*<br><br>
 
-We understand. Since our icons are available from `/favicons/main/`, then call our style and should be a *'main'*. [More...] (/Jaguarko/JFavicon/blob/master/README.md)<br>
+We understand. Since our icons are available from `/favicons/main/`, then call our style and should be a *'main'*. [More...] (/StranNick/JFavicon/blob/master/README.md)<br>
 Then we just say our style * (main) * and we can freely use this library
