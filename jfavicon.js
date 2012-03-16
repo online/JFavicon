@@ -2,7 +2,7 @@
  * JFavicon - A small library for manipulating the Favicon
  * Str@nnik
  * Copyright (c) 2012 Alex Ivashkin
- * @version 0.2.9
+ * @version 0.3.1
 */
 
 (function() {
@@ -19,14 +19,27 @@
 		favicon: '/favicon.ico',
 		currStyle: 'default',
 		dir: '/',
-		font: 'normal 8px sans-serif'
+		font: 'normal 8px sans-serif',
+		sMes: false,
+		mes: 'Новых: {c}'
 	};
+	
+	var ua = (function () {
+		var agent = navigator.userAgent.toLowerCase();
+		// New function has access to 'agent' via closure
+		return function (browser) {
+			return agent.indexOf(browser) !== -1;
+		};
+	}());
+	
+	if (ua('safari')) {jf.sett.brow = 'saf'} else if (ua('msie')) {jf.sett.brow = 'ie'} else {jf.sett.brow = false}
 	
 	jf.init = function (value) {
 		jf.m.body = document.getElementsByTagName('body')[0];
 		jf.m.head = document.getElementsByTagName('head')[0];
 		jf.m.fav = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')[0];
-		jf.m.title = document.getElementsByTagName('title')[0];
+		jf.m.setTitle = document.getElementsByTagName('title')[0];
+		jf.m.title = document.title;
 		
 		if (typeof value != undefined) {
 			if (value.extract) window.jf = jf;
@@ -39,6 +52,8 @@
 			if (value.ct) jf.sett.ct = value.ct;
 			if (value.num) jf.sett.num = value.num;
 			if (value.font) jf.sett.font = value.font;
+			if (value.message) jf.sett.mes = value.message;
+			if (value.showMessage) jf.sett.sMes = value.showMessage;
 		}
 		
 		favicon();
@@ -84,6 +99,14 @@
 		if (jf.sett.currStyle == 'default') {
 			var img = new Image();
 			img.src = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')[0].href;
+			
+			function title () {
+				if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
+					var title = jf.sett.mes.replace('{c}', num).replace('{s}', jf.m.title);
+					jf.m.setTitle.innerHTML = title;
+				}
+			}
+			
 			img.onload = function () {
 				var canva = document.createElement('canvas');
 				canva.width = 16;
@@ -101,7 +124,7 @@
 				link.href = canva.toDataURL();
 				link.type = 'image/x-icon';
 				jf.m.head.appendChild(link);
-				
+				title();
 			}
 		} else {
 			jf.m.head.removeChild(document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')[0]);
@@ -112,6 +135,7 @@
 			link.href = jf.sett.dir + jf.sett.currStyle + '/' + jf.style[jf.sett.currStyle].pref + currNum + jf.style[jf.sett.currStyle].ext;
 			link.type = 'image/x-icon';
 			jf.m.head.appendChild(link);
+			title();
 		}
 		
 		jf.sett.num = num;
@@ -139,11 +163,19 @@
 		link.href = jf.m.fvi.href;
 		link.type = 'image/x-icon';
 		jf.m.head.appendChild(link);
+		
+		if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
+			jf.m.setTitle.innerHTML = jf.m.title;
+		}
 	};
 	
 	jf.reset = function () {
 		jf.disable();
 		jf.sett.num = null;
+		
+		if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
+			jf.m.setTitle.innerHTML = jf.m.title;
+		}
 	};
 	
 	window.JFavicon = jf;
