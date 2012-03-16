@@ -3,11 +3,13 @@
 <head>
 <title>JFavicon</title>
 <style>* {margin: 0; padding: 0}</style>
-<script type='text/javascript' src='jfavicon.js'></script>
+<script type='text/javascript' src='jfavicon.min.js'></script>
 </head>
 <body>
 <script>
 JFavicon.init({extract: 1, bg: '#F03D25', fav: 'favicon.ico'});
+var c = 1;
+setInterval('if (c < 125) {jf.add(); c++} else {c = 1; jf.draw(c)} ', 1000);
 </script>
 </body>
 </html>
