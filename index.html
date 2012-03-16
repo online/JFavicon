@@ -25,6 +25,6 @@
 	<script>
 		JFavicon.init({extract: 1, bg: '#F03D25', fav: 'favicon.ico', showMessage: 1, message: 'Уже {c} новых! - {s}'});
 		var c = 1;
-		setInterval('if (c < 125) {jf.add(); c++} else {c = 1; jf.draw(c)} ', 1000);
+		var interv = setInterval('if (c < 125) {jf.add(); c++} else {c = 1; jf.draw(c)} ', 1000);
 	</script>
 </body>
