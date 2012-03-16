@@ -1,26 +1,30 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-<title>JFavicon</title>
-<style>* {margin: 0; padding: 0}
-#body {
-	width: 790px;
-	min-height: 500px;
-	position: relative;
-	left: 50%;
-	margin-left: -395px;
-	margin-top: 50px;
-	font-size: 15pt;
-}
-</style>
+<title>JFavicon - прорыв</title>
 <script type='text/javascript' src='jfavicon.min.js'></script>
+<link rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<div id='body'>JFavicon</div>
-<script>
-JFavicon.init({extract: 1, bg: '#F03D25', fav: 'favicon.ico'});
-var c = 1;
-setInterval('if (c < 125) {jf.add(); c++} else {c = 1; jf.draw(c)} ', 1000);
-</script>
+	<div id="container">
+		<h1>JFavicon</h1>
+		<h2>A small library for manipulating the favicon</h2>
+		<p>JFavicon can dynamically change the favicon, adding to it a block with a counter (or changing your favicon to another, depending on the value of the counter).</p>
+		<p>This feature is very convenient for users and allow them to see updates on your page.</p>
+		<div align="center" id="image"><img src="http://jpegshare.net/images/04/7b/047b6c7675bea1e735a877bf6e54a2fb.png"></div>
+		<h3>Demo</h3>
+		<p>Look up and check out the favicon on this page to see the library in action on chrome and firefox.</p>
+		<h3>Download</h3>
+		<p>JFavicon can be downloaded from the <a href="https://github.com/StranNick/JFavicon">public repository on github.</a></p>
+		<h3>Contact</h3>
+		<p>Please use github to submit issues with Tinycon, or if you just want to say hey - write to me at the e-mail: <a href='mailto:Savegod1@gmail.com'>Savegod1@gmail.com</a> (I speak Russian)</p>
+	</div>
+	<a href="https://github.com/StranNick/JFavicon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+
+	<script>
+		JFavicon.init({extract: 1, bg: '#F03D25', fav: 'favicon.ico', showMessage: 1, message: 'Уже {c} новых! - {s}'});
+		var c = 1;
+		setInterval('if (c < 125) {jf.add(); c++} else {c = 1; jf.draw(c)} ', 1000);
+	</script>
 </body>
-</html>
