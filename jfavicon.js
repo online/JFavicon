@@ -176,12 +176,14 @@
 	
 	jf.reset = function () {
 		jf.disable();
-		return jf.sett.num;
+		var returns = jf.sett.num;
 		jf.sett.num = null;
 		
 		if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
 			jf.m.setTitle.innerHTML = jf.m.title;
 		}
+		
+		return returns;
 	};
 	
 	window.JFavicon = jf;
