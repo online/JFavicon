@@ -2,7 +2,7 @@
  * JFavicon - A small library for manipulating the Favicon
  * Str@nnik
  * Copyright (c) 2012 Alex Ivashkin
- * @version 0.3.1
+ * @version 0.3.3
 */
 
 (function() {
@@ -78,6 +78,7 @@
 		if (typeof value != undefined) {
 			if (typeof jf.style[value.title] == undefined) {
 				jf.style[value.title] = value;
+				return this;
 			}
 		}
 	};
@@ -147,6 +148,7 @@
 			num = 1;
 		}
 		jf.draw(jf.sett.num+num);
+		return this;
 	};
 	
 	jf.deduct = function (num) {
@@ -154,6 +156,7 @@
 			num = 1;
 		}
 		jf.draw(jf.sett.num-num);
+		return this;
 	};
 	
 	jf.disable = function () {
@@ -167,10 +170,13 @@
 		if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
 			jf.m.setTitle.innerHTML = jf.m.title;
 		}
+		
+		return this;
 	};
 	
 	jf.reset = function () {
 		jf.disable();
+		return jf.sett.num;
 		jf.sett.num = null;
 		
 		if (jf.sett.sMes || jf.sett.brow == 'ie' || jf.sett.brow == 'saf') {
